@@ -5,13 +5,13 @@ JavaScript (ES6 and later), WebGL2 by default, modules, classes, better use of p
 
 Modules
 --
-- `core.js` &mdash; A wrapper class for WebGL context, and classes for
+- `core.js` &mdash; a wrapper class for WebGL context, and classes for
   creating, comiling and linking shaders and shader programs.
   The latter automatically provide handles for attributes and
   uniforms of shader programs, by analyzing the sahders'
   source code, using regular expressions.
 
-- `context.js` &mdash; A class that extends the core context
+- `context.js` &mdash; extends the core context class
   with extra properties and a cleanup method (called before page
   unload).
 
