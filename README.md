@@ -51,3 +51,6 @@ following links:
   &mdash;  testing animation through frame requests, lighting effect
   that varies in time, handling of vertex and index buffers, and
   geometric corrections on resize events.
+
+- The `galaxy-small.jpg` image is by the `European Space Agency / Hubble Space Telescope`, and made available under `CC-BY-3.0` license (see http://www.spacetelescope.org/copyright/).
+
