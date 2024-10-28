@@ -40,7 +40,7 @@ following links:
 
 - [test-texture](https://filin.fi/kangas.js/tests/test-texture.html)
   -- testing the texture class by creating a texture from an image
-  file
+  file.
 
 - [test-transforms](https://filin.fi/kangas.js/tests/test-transforms.html)
   -- testing 3D math. 
