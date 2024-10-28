@@ -25,7 +25,8 @@ Modules
   and index buffers and data, time keeping and resize events.
 
 - `load.js` &mdash; utility functions for asynchronously downloading
-  shaders source files and other remote resources.
+  shaders source files and other remote resources, and for
+  communicating to the user the progress of download and resource processing. 
 
 Tests
 --
