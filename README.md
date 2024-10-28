@@ -1,5 +1,5 @@
 # kangas.js
-JavaScript helper library for WebGL applications.
+A more modern JavaScript helper library for WebGL applications.
 This is the successor of [kangas-lib](https://github.com/idofilin/kangas-lib), with modern 
 JavaScript (ES6 and later), WebGL2 by default, modules, classes, better use of promises and asynchronous functions, etc. Also containing tests.
 
