@@ -6,7 +6,7 @@ JavaScript (ES6 and later), WebGL2 by default, modules, classes, better use of p
 Modules
 --
 - `core.js` &mdash; a wrapper class for WebGL context and classes for
-  creating, comiling and linking shaders and shader programs.
+  creating, compiling and linking shaders and shader programs.
   The latter automatically provide handles for attributes and
   uniforms of shader programs, by analyzing the sahders'
   source code, using regular expressions.
@@ -35,7 +35,7 @@ following links:
 
 - [test-core](https://filin.fi/kangas.js/tests/test-core.html)
   &mdash;
-  basic functionality of the core graphics context class. 
+  basic functionality of the core graphics context class and of the shader and shader-program classes. 
 
 - [test-context](https://filin.fi/kangas.js/tests/test-context.html)
   &mdash; functionality of the full (extended) context class.
