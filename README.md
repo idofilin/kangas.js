@@ -28,6 +28,9 @@ Modules
   shaders source files and other remote resources, and for
   communicating to the user the progress of download and resource processing. 
 
+- `fractal-texture.js` &mdash; an extension of the Texture class, with a method to
+	generate a fractal texture from self. 
+
 Tests
 --
 Contained in the __tests__ folder, and available online through the
@@ -36,7 +39,6 @@ following links:
 - [test-core](https://filin.fi/kangas.js/tests/test-core.html)
   &mdash;
   basic functionality of the core graphics context class and of the shader and shader-program classes. 
-
 - [test-context](https://filin.fi/kangas.js/tests/test-context.html)
   &mdash; functionality of the full (extended) context class.
 
@@ -51,6 +53,9 @@ following links:
   &mdash;  testing animation through frame requests, lighting effect
   that varies in time, handling of vertex and index buffers, and
   geometric corrections on resize events.
+
+- [test-fractal](https://filin.fi/kangas.js/tests/test-fractal.html)
+  &mdash;  testing the generation of a fractal texture from a base image texture. 
 
 - The `galaxy-small.jpg` image is by the `European Space Agency / Hubble Space Telescope`, and made available under `CC-BY-3.0` license (see http://www.spacetelescope.org/copyright/).
 

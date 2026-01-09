@@ -1,5 +1,5 @@
 /*
-Copyright 2016-2024 Ido Filin 
+Copyright 2016-2026 Ido Filin
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -119,7 +119,7 @@ class Shader {
 };
 
 const uniformRE = /^\s*uniform\s+((highp|lowp|mediump)\s+)?(float|int|vec2|vec3|vec4|mat2|mat3|mat4|sampler2D|sampler3D)\s+(\w*)(?:\[\d+\])?\s*;/mg;
-const attributeRE = /^\s*(attribute|in|IN)\s+((highp|lowp|mediump)\s+)?(float|vec2|vec3|vec4)\s+(\w*)\s*;/mg;
+const attributeRE = /^\s*(layout\([^)]+\)\s+)?(attribute|in|IN)\s+((highp|lowp|mediump)\s+)?(float|vec2|vec3|vec4)\s+(\w*)\s*;/mg;
 
 class Program { 
 	constructor (vshader, fshader) {

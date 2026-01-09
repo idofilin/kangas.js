@@ -1,5 +1,5 @@
 /*
-Copyright 2016-2024 Ido Filin 
+Copyright 2016-2026 Ido Filin
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,7 +24,9 @@ import { Renderer } from "../kangas.js/renderer.js"
 const canvas = document.getElementById('app-canvas');
 const button = document.getElementById('fullscreen-button');
 button.onclick = ()=>{canvas.requestFullscreen(canvas)};
-const context = new Context(canvas, {alpha:true}, [Shader, Program, Texture, Renderer]);
+const context = new Context(canvas, 
+	{alpha:true}, 
+	[Shader, Program, Texture, Renderer]);
 const gl = context[GLNAME];
 const twopi = Transform.twopi;
 const sizeof = Transform.sizeof;

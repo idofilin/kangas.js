@@ -15,23 +15,37 @@ limitations under the License.
 */
 
 import { Context, GLNAME, Shader, Program } from "../kangas.js/context.js"
-import { Texture } from "../kangas.js/texture.js"
+import { Texture } from "../kangas.js/fractal-texture.js"
+import { Renderer } from "../kangas.js/renderer.js"
 
 const canvas = document.getElementById('app-canvas');
 const button = document.getElementById('fullscreen-button');
 button.onclick = ()=>{canvas.requestFullscreen(canvas)};
-const context = new Context(canvas, {alpha:true}, [Shader, Program, Texture]);
+const context = new Context(canvas, 
+	{alpha:true}, 
+	[Shader, Program, Texture, Renderer]);
 const gl = context[GLNAME];
 const twopi = 2.0*Math.PI;
 let program;
+let renderer = new context.Renderer();
+renderer.setDefaultResizer(resizeCanvasCallback);
 let galaxy = context.Texture.init(
 	{ 
 		src: "./galaxy-small.jpg", 
-		options: {format:gl.RGB, width:512, heigh: 512} 
+		options: {format:gl.RGB, width:1024, heigh: 1024, wrap: gl.REPEAT} 
 	}, initRendering );
 
-
 function initRendering () {
+	window.requestAnimationFrame(firstRendering);
+}
+
+let galaxyFractalTex=null;
+function firstRendering () {
+	galaxyFractalTex = generateFractalTex(galaxy); 
+	gl.bindTexture(gl.TEXTURE_2D, galaxyFractalTex[GLNAME]);
+	gl.deleteTexture(galaxy[GLNAME]);
+	galaxy=galaxyFractalTex;
+
 	gl.viewport(0,0,gl.drawingBufferWidth,gl.drawingBufferHeight);
 	gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	gl.clear(gl.COLOR_BUFFER_BIT);
@@ -79,14 +93,27 @@ function initRendering () {
 	window.requestAnimationFrame(animate);
 }
 
-
 function animate(timestamp) {
-	//console.log(timestamp);
-	gl.uniform1f(program.phase, -(timestamp/1000.0)%twopi);
+	gl.uniform1f(program.phase, -(timestamp/10000.0)%twopi);
 	gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
 	window.requestAnimationFrame(animate);
 }
 
+function generateFractalTex (basisTex) {
+	let fractalopts = {format: gl.RGB, 
+		target: gl.TEXTURE_2D, 
+		height: 246, width: 256, 
+		filter: gl.NEAREST, 
+		weights: [0.2, 1.0, 0.2, 0.0],
+		wrap: gl.REPEAT,
+	    filter: null};
+	let fractalTex = basisTex.fractal(fractalopts);
+	return fractalTex;
+}
+
+function resizeCanvasCallback (e, projection) {
+	gl.viewport(0,0,gl.drawingBufferWidth,gl.drawingBufferHeight);
+}
 
 function getvShaderText() {
 	return `
@@ -135,8 +162,8 @@ const vec2 center = vec2(0.5,0.5);
 
 void main(void)
 {
-	vec3 texcolor = texture(galaxy, rotate2d(textureCoord, texcenter, -phase)).rgb;
-	fragment_color = 0.9*vec4(texcolor,1.0) + 0.3*vec4(textureCoord.s, sin(freq*PI*distance(textureCoord,center) + freq*phase), textureCoord.t, 1.0);
+	vec3 texcolor = texture(galaxy, rotate2d(textureCoord, texcenter, -phase)).rgr;
+	fragment_color = 0.9*vec4(texcolor,1.0) + 0.3*vec4(sin(freq*PI*distance(textureCoord,center) + freq*phase), textureCoord.st, 1.0);
 }
 `
 }
