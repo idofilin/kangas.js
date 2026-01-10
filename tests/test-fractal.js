@@ -33,14 +33,10 @@ let galaxy = context.Texture.init(
 	{ 
 		src: "./galaxy-small.jpg", 
 		options: {format:gl.RGB, width:1024, heigh: 1024, wrap: gl.REPEAT} 
-	}, initRendering );
-
-function initRendering () {
-	window.requestAnimationFrame(firstRendering);
-}
+	}, function () {window.requestAnimationFrame(initRendering)} );
 
 let galaxyFractalTex=null;
-function firstRendering () {
+function initRendering () {
 	galaxyFractalTex = generateFractalTex(galaxy); 
 	gl.bindTexture(gl.TEXTURE_2D, galaxyFractalTex[GLNAME]);
 	gl.deleteTexture(galaxy[GLNAME]);
