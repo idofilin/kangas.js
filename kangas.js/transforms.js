@@ -1,5 +1,5 @@
 /*
-Copyright 2016-2026 Ido Filin
+Copyright (C) 2016–2026 Ido Filin. 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,7 +15,9 @@ limitations under the License.
 */
 
 const twopi = Math.PI * 2.0;
+const halfpi = Math.PI / 2.0;
 const deg2rad = Math.PI / 180.0;
+const rad2deg = 180.0 / Math.PI;
 const sizeof = {};
 Object.defineProperties ( sizeof, {
 	float32:{
@@ -250,7 +252,7 @@ function vecInterp(lowvec, hivec, factor) {
 }
 
 export { 
-	twopi, deg2rad, sizeof,
+	twopi, halfpi, rad2deg, deg2rad, sizeof,
 	rampPerspective, 
 	frustum, 
 	perspective, 

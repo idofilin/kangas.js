@@ -1,5 +1,5 @@
 /*
-Copyright 2016-2026 Ido Filin
+Copyright (C) 2016–2026 Ido Filin. 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -143,7 +143,14 @@ class Context extends CoreContext {
 function getContextParams (options) {
 	let contextParams = {
 		alpha: (options && options.alpha!=undefined) ? options.alpha : false,
-		"antialias": (options && options.antialias!=undefined) ? options.antialias : true,
+		"antialias": (options && options.antialias!=undefined)? 
+				options.antialias : true,
+		"preserveDrawingBuffer": 
+			(options && options.preserveDrawingBuffer!=undefined)? 
+				options.preserveDrawingBuffer : true,
+		"premultipliedAlpha": 
+			(options && options.premultipliedAlpha!=undefined)? 
+				options.premultipliedAlpha : false,
 	};
 	return contextParams; 
 };
